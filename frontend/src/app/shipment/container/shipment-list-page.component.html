@@ -2,6 +2,7 @@
     <h1>{{'SHIPMENT-LIST-COMPONENT_TITLE' | translate}}</h1>
     <educama-shipment-list
         [shipmentList]="shipmentListModel.shipmentList"
+        (shipmentSelectedEvent)="onShipmentSelectedEvent($event)"
     >
     </educama-shipment-list>
     <div class="ui-g ui-fluid">

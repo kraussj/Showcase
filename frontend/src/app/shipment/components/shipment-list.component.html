@@ -4,7 +4,9 @@
         [emptyMessage]="emptyListMessage"
         [responsive] = true
         selectionMode="single"
-        [(selection)]="selectedShipment">
+        [(selection)]="selectedShipment"
+        (onRowSelect)="onRowSelect($event)"
+>
     <p-column field="trackingId" header="{{'SHIPMENT-RESOURCE_TRACKING-ID' | translate}}"></p-column>
     <p-column field="senderAddress" header="{{'SHIPMENT-RESOURCE_SENDER' | translate}}"></p-column>
     <p-column field="receiverAddress" header="{{'SHIPMENT-RESOURCE_RECEIVER' | translate}}"></p-column>

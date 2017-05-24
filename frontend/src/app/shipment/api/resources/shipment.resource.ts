@@ -1,4 +1,4 @@
-import {Cargo} from "../datastructures/cargo.datastructure";
+import {ShipmentCargo} from "../datastructures/cargo.datastructure";
 import {ShipmentServices} from "../datastructures/services.datastructure";
 import {Party} from "../datastructures/party.datastructure";
 export class ShipmentResource {
@@ -8,6 +8,6 @@ export class ShipmentResource {
     public sender: Party;
     public receiver: Party;
     public customerTypeEnum: string;
-    public shipmentCargo: Cargo;
+    public shipmentCargo: ShipmentCargo;
     public shipmentServices: ShipmentServices;
 }

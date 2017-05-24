@@ -1,18 +1,22 @@
-import {Component, Output, OnInit, EventEmitter} from "@angular/core";
+import {Component, Output, OnInit, EventEmitter, Input, DoCheck} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {CustomerService} from "../../customer/api/customer.service";
 import {CustomerResource} from "../../customer/api/resources/customer.resource";
 import {Router} from "@angular/router";
 import {ShipmentResource} from "../api/resources/shipment.resource";
 import {ShipmentService} from "../api/shipment.service";
-import {Cargo} from "../api/datastructures/cargo.datastructure";
+import {ShipmentCargo} from "../api/datastructures/cargo.datastructure";
 import {ShipmentServices} from "../api/datastructures/services.datastructure";
+import {EditorMode} from "../../common/ui/enums/editor-mode.enum";
 
 @Component({
     selector: "educama-shipment-capture",
-    templateUrl: "./shipment-capture.component.html"
+    templateUrl: "shipment-capture.component.html"
 })
-export class ShipmentCaptureComponent implements OnInit {
+export class ShipmentCaptureComponent implements OnInit, DoCheck {
+
+    @Input()
+    public shipment: ShipmentResource;
 
     @Output()
     public createShipmentCancellationEvent = new EventEmitter();
@@ -44,6 +48,9 @@ export class ShipmentCaptureComponent implements OnInit {
     public receiverIsCustomerCheck: boolean = false;
     public customerTypeEnum: string = "SENDER";
 
+    public editorMode: EditorMode;
+    private _isInitialized:boolean = false;
+
     constructor(private _formBuilder: FormBuilder,
                 private _customerService: CustomerService,
                 private _router: Router,
@@ -68,6 +75,30 @@ export class ShipmentCaptureComponent implements OnInit {
             onCarriage: [""],
             customerTypeEnum: [""],
         });
+    }
+
+    public ngDoCheck() {
+
+        // Determine editor mode based on existence of a passed in customer
+        this.editorMode = this.shipment ? EditorMode.update : EditorMode.create;
+
+        if (this.editorMode === EditorMode.update && !this._isInitialized) {
+            this.shipmentCaptureForm.get("sender").setValue(this.shipment.sender.name);
+            this.shipmentCaptureForm.get("receiver").setValue(this.shipment.receiver.name);
+            this.shipmentCaptureForm.get("numberPackages").setValue(this.shipment.shipmentCargo.numberPackages);
+            this.shipmentCaptureForm.get("totalWeight").setValue(this.shipment.shipmentCargo.numberPackages);
+            this.shipmentCaptureForm.get("totalCapacity").setValue(this.shipment.shipmentCargo.totalCapacity);
+            this.shipmentCaptureForm.get("dangerousGoods").setValue(this.shipment.shipmentCargo.dangerousGoods);
+            this.shipmentCaptureForm.get("preCarriage").setValue(this.shipment.shipmentServices.preCarriage);
+            this.shipmentCaptureForm.get("exportInsurance").setValue(this.shipment.shipmentServices.exportInsurance);
+            this.shipmentCaptureForm.get("exportCustomsClearance").setValue(this.shipment.shipmentServices.exportCustomsClearance);
+            this.shipmentCaptureForm.get("flight").setValue(this.shipment.shipmentServices.flight);
+            this.shipmentCaptureForm.get("importInsurance").setValue(this.shipment.shipmentServices.importInsurance);
+            this.shipmentCaptureForm.get("importCustomsClearance").setValue(this.shipment.shipmentServices.importCustomsClearance);
+            this.shipmentCaptureForm.get("onCarriage").setValue(this.shipment.shipmentServices.onCarriage);
+            this.shipmentCaptureForm.get("customerTypeEnum").setValue(this.shipment.customerTypeEnum);
+            this._isInitialized = true;
+        }
     }
 
     // ***************************************************
@@ -110,7 +141,7 @@ export class ShipmentCaptureComponent implements OnInit {
 
         let shipment = new ShipmentResource();
 
-        let shipmentCargo = new Cargo(
+        let shipmentCargo = new ShipmentCargo(
             this.shipmentCaptureForm.get("cargoDescription").value,
             this.shipmentCaptureForm.get("totalWeight").value,
             this.shipmentCaptureForm.get("totalCapacity").value,

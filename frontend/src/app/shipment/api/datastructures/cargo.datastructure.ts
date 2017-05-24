@@ -1,4 +1,4 @@
-export class Cargo {
+export class ShipmentCargo {
     public cargoDescription: string;
     public totalWeight: number;
     public totalCapacity: number;

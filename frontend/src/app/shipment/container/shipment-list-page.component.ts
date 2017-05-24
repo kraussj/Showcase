@@ -51,6 +51,10 @@ export class ShipmentListPageComponent implements OnInit, OnDestroy {
     // Event Handler
     // ***************************************************
 
+    public onShipmentSelectedEvent(trackingID: string) {
+        this._router.navigate(["/shipments/edit/" + trackingID]);
+    }
+
     /*
      * Handles the error events from components
      */
