@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {Actions, Effect} from "@ngrx/effects";
 import {Store} from "@ngrx/store";
 import {State} from "../../../app.reducers";
-import * as actions from "../store/shipments/shipment-list-page.actions";
-import {ShipmentListSlice} from "../store/shipments/shipment-list-page.slice";
+import * as actions from "../store/tasks/task-list-page.actions";
+import {TaskListSlice} from "../store/tasks/task-list-page.slice";
 import {Observable} from "rxjs/Observable";
 import {TaskService} from "../api/task.service";
 import {RequestTasksFailedAction, RequestTasksSuccessfulAction} from "../store/tasks/task-list-page.actions";
@@ -17,9 +17,9 @@ export class TaskListEffect {
     }
 
     @Effect() loadTasks = this._actions
-        .ofType(actions.REQUEST_SHIPMENTS)
-        .withLatestFrom(this._store, (action, state) => state.shipmentListSlice)
-        .switchMap((taskListSlice: ShipmentListSlice) => {
+        .ofType(actions.REQUEST_TASKS)
+        .withLatestFrom(this._store, (action, state) => state.taskListSlice)
+        .switchMap((taskListSlice: TaskListSlice) => {
             return this._taskService.findTasks();
         })
         .map(taskListSlice => new RequestTasksSuccessfulAction(taskListSlice))
