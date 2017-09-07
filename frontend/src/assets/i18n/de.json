@@ -29,7 +29,8 @@
   "NAVIGATION-BAR-COMPONENT_MENU-ITEM_CUSTOMER-LIST": "Kunden",
   "NAVIGATION-BAR-COMPONENT_MENU-ITEM_MASTER-DATA": "Stammdaten",
   "NAVIGATION-BAR-COMPONENT_MENU-ITEM_SHIPMENT-LIST": "Transportaufträge",
-  "NAVIGATION-BAR-COMPONENT_MENU-ITEM_TASK-LIST": "Taskliste",
+  "NAVIGATION-BAR-COMPONENT_MENU-ITEM_TASK-LIST": "Aufgabenliste",
+  "NAVIGATION-BAR-COMPONENT_MENU-ITEM_ENABLED_TASK-LIST": "Aktivierbare Aufgaben",
   "REST-CLIENT-SERVICE_ERROR-SERVER-UNREACHABLE": "Es tut uns leid! Wir haben ein technischnes Problem. Bitte probieren Sie es später noch ein mal.",
   "SHIPMENT-LIST-COMPONENT_TITLE": "Liste der Transportaufträge",
   "SHIPMENT-CAPTURE-COMPONENT_TITLE-CREATE": "Transportauftrag anlegen",
@@ -65,5 +66,6 @@
   "TASK-RESOURCE_TASK-NAME": "Taskname",
   "TASK-RESOURCE_DESCRIPTION": "Beschreibung",
   "TASK-RESOURCE_ASSIGNEE": "Zugewiesen an",
-  "TASK-LIST-PAGE-COMPONENT-TITLE": "Alle Aufgaben"
+  "TASK-LIST-PAGE-COMPONENT-TITLE": "Aktive Aufgaben",
+  "ENABLED-TASK-LIST-PAGE-COMPONENT-TITLE": "Aktivierbare Aufgaben"
 }

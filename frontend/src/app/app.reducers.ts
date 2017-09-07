@@ -1,6 +1,7 @@
 import {ActionReducerMap} from "@ngrx/store";
 import {SHIPMENT_LIST_PAGE_REDUCER} from "./shipment/shipment-common/store/shipments/shipment-list-page.reducer";
 import {TASK_LIST_PAGE_REDUCER} from "./shipment/shipment-common/store/tasks/task-list-page.reducer";
+import {ENABLED_TASK_LIST_PAGE_REDUCER} from "./shipment/shipment-common/store/tasks_enabled/task_enabled-list-page.reducer";
 import {CUSTOMER_LIST_PAGE_REDUCER} from "./customer/customer-common/store/customer-list-page.reducer";
 import {CUSTOMER_CAPTURE_PAGE_REDUCER} from "./customer/customer-common/store/customer-capture-page.reducer";
 import {CustomerListSlice} from "./customer/customer-common/store/customer-list-page.slice";
@@ -16,14 +17,17 @@ import {AIRPORT_LIST_SLICE_INITIAL_STATE} from "./flights/flights-common/store/a
 import {AIRPORT_LIST_PAGE_REDUCER} from "./flights/flights-common/store/airport-list-page.reducer";
 import {ShipmentListSlice} from "./shipment/shipment-common/store/shipments/shipment-list-page.slice";
 import {TaskListSlice} from "./shipment/shipment-common/store/tasks/task-list-page.slice";
+import {EnabledTaskListSlice} from "./shipment/shipment-common/store/tasks_enabled/task_enabled-list-page.slice";
 import {ShipmentCaptureSlice} from "./shipment/shipment-common/store/shipments/shipment-capture-page.slice";
 import {TASK_LIST_SLICE_INITIAL_STATE} from "./shipment/shipment-common/store/tasks/task-list-page.initial-state";
+import {ENABLED_TASK_LIST_SLICE_INITIAL_STATE} from "./shipment/shipment-common/store/tasks_enabled/task_enabled-list-page.initial-state";
 import {SHIPMENT_LIST_SLICE_INITIAL_STATE} from "./shipment/shipment-common/store/shipments/shipment-list-page.initial-state";
 import {SHIPMENT_CAPTURE_SLICE_INITIAL_STATE} from "./shipment/shipment-common/store/shipments/shipment-capture-page.initial-state";
 
 export interface State {
     shipmentListSlice: ShipmentListSlice;
     taskListSlice: TaskListSlice;
+    enabledTaskListSlice: EnabledTaskListSlice;
     customerListSlice: CustomerListSlice;
     customerCaptureSlice: CustomerCaptureSlice;
     errorSlice: ErrorSlice;
@@ -34,6 +38,7 @@ export interface State {
 export const INITIAL_STATE = {
     shipmentListSlice: SHIPMENT_LIST_SLICE_INITIAL_STATE,
     taskListSlice: TASK_LIST_SLICE_INITIAL_STATE,
+    EnabledTaskListSlice: ENABLED_TASK_LIST_SLICE_INITIAL_STATE,
     customerListSlice: CUSTOMER_LIST_SLICE_INITIAL_STATE,
     customerCaptureSlice: CUSTOMER_CAPTURE_SLICE_INITIAL_STATE,
     errorSlice: ERROR_SLICE_INITIAL_STATE,
@@ -44,6 +49,7 @@ export const INITIAL_STATE = {
 export const reducers: ActionReducerMap<State> = {
     shipmentListSlice: SHIPMENT_LIST_PAGE_REDUCER,
     taskListSlice: TASK_LIST_PAGE_REDUCER,
+    enabledTaskListSlice: ENABLED_TASK_LIST_PAGE_REDUCER,
     customerListSlice: CUSTOMER_LIST_PAGE_REDUCER,
     customerCaptureSlice: CUSTOMER_CAPTURE_PAGE_REDUCER,
     errorSlice: ERROR_REDUCER,

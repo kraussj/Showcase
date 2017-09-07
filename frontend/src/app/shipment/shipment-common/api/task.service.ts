@@ -11,7 +11,7 @@ import {TaskListResource} from "./resources/task-list.resource";
 @Injectable()
 export class TaskService {
 
-    private TASK_RESOURCE_PATH = "tasks/active";
+    private TASK_RESOURCE_PATH = "tasks";
 
     constructor(private _restClientService: RestClientService) {
     }
@@ -21,7 +21,12 @@ export class TaskService {
      * @return An observable array of shipments
      */
     public findTasks(): Observable<TaskListResource> {
-        return this._restClientService.get(this.TASK_RESOURCE_PATH);
+        return this._restClientService.get(this.TASK_RESOURCE_PATH + "/active");
+    }
+
+    public findEnabledTasks(): Observable<TaskListResource> {
+      return this._restClientService.get(this.TASK_RESOURCE_PATH + "/enabled");
+
     }
 
 }
