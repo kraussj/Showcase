@@ -1,6 +1,7 @@
 import {Routes, RouterModule} from "@angular/router";
 import {ShipmentListPageComponent} from "../../shipment-list/container/shipment-list-page.component";
 import {TaskListPageComponent} from "../../task-list/container/task-list-page.component";
+import {EnabledTaskListPageComponent} from "../../task-list_enabledTask/container/task_enabled-list-page.component";
 import {ShipmentCapturePageComponent} from "../../shipment-capture/container/shipment-capture-page.component";
 
 /*
@@ -16,7 +17,11 @@ const SHIPMENT_ROUTES: Routes = [
         component: ShipmentCapturePageComponent
     },
     {
-        path: "tasks",
+        path: "tasks/enabled",
+        component: EnabledTaskListPageComponent
+    },
+    {
+        path: "tasks/active",
         component: TaskListPageComponent
     },
     {

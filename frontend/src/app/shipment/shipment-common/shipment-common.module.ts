@@ -6,12 +6,14 @@ import {SHIPMENT_ROUTING} from "./routes/shipment.routes";
 import {EffectsModule} from "@ngrx/effects";
 import {ShipmentListEffect} from "./effects/shipment-list.effect";
 import {TaskListEffect} from "./effects/task-list.effect";
+import {EnabledTaskListEffect} from "./effects/task_enabled-list.effect";
 
 @NgModule({
   imports: [
     EffectsModule.forFeature([
       ShipmentListEffect,
-      TaskListEffect
+      TaskListEffect,
+      EnabledTaskListEffect
     ]),
     SHIPMENT_ROUTING,
     SharedModule,

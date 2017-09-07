@@ -41,7 +41,6 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
             if (params["id"] && params["id"] !== "capture") {
                 this.loadShipment(params["id"]);
             }
-            console.log(params["id"]);
         });
     }
 
@@ -93,8 +92,6 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
                 this._store.dispatch(new actions.LoadShipmentAction(shipment));
             }
         );
-        console.log(trackingId);
-
     }
 
     private updateShipmentCaptureModel(shipmentCaptureSlice: ShipmentCaptureSlice) {
