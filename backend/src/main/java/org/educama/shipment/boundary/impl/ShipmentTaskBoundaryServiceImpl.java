@@ -65,4 +65,13 @@ public class ShipmentTaskBoundaryServiceImpl implements ShipmentTaskBoundaryServ
 
         return shipmentTasks;
     }
+
+    @Override
+    public void manuallyStartEnabledTask(String trackingID, String name) {
+        Collection<CaseExecution> caseExecutions =
+                caseService.createCaseExecutionQuery().caseInstanceBusinessKey(trackingID).list();
+
+        caseExecutions.stream().filter(caseExecution -> caseExecution.getActivityName().equals(name)).
+                findFirst().ifPresent(caseExecution -> caseService.manuallyStartCaseExecution(caseExecution.getId()));
+    }
 }

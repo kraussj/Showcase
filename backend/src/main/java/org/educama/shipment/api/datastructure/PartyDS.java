@@ -16,6 +16,9 @@ public class PartyDS {
 
     public AddressDS address;
 
+    public PartyDS() {
+    }
+
     public PartyDS(Customer customer) {
 
         this.uuid = customer.uuid;
